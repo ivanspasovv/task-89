@@ -1,6 +1,5 @@
 import EventEmitter from "eventemitter3";
-import { createHtmlTagObject } from "html-webpack-plugin";
-
+import image from "../images/planet.svg";
 export default class Application extends EventEmitter {
   static get events() {
     return {
@@ -68,4 +67,4 @@ export default class Application extends EventEmitter {
   </div>
   `;
   }
-};
+}
