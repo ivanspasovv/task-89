@@ -51,11 +51,11 @@ export default class Application extends EventEmitter {
   }
 
   _startLoading() {
-    this._loading.style.display = "block";
+    this._loading.style.display = 'block';
   }
 
   _stopLoading() {
-    this._loading.style.display = "none";
+    this._loading.style.display = 'none';
   }
 
   _render({name }) {
