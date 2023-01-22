@@ -18,15 +18,16 @@ export default class Application extends EventEmitter {
   }
 
   async _load() {
-    let URL = 'https://swapi.boom.dev/api/planets/';
+    const URL = 'https://swapi.boom.dev/api/planets/';
+    let next = URL;
 
     this._startLoading();
 
-    while (URL) {
-      const response = await fetch(URL);
+    while (next) {
+      const response = await fetch(next);
 
       const planetCollection = await response.json();
-      URL = planetCollection.URL;
+      next = planetCollection.next;
 
       this.planets = [...this.planets, ...planetCollection.results];
     }
@@ -50,21 +51,21 @@ export default class Application extends EventEmitter {
   }
 
   _startLoading() {
-    this._loading.style.display = 'block';
+    this._loading.style.display = "block";
   }
 
   _stopLoading() {
-    this._loading.style.display = 'none';
+    this._loading.style.display = "none";
   }
 
-  _render({name}) {
+  _render({name }) {
     return `
   <div>
-    <h4 class="mb-3">${name}</h4>
-    <figure class="image is-64x64">
-      <img src="${image}">
-    </figure>
+    <h4 class=mb-2>${name}</h4>
+      <div class="image is-64x64">
+        <img src="${image}">
+    </div>
   </div>
-  `;
+    `;
   }
 }
